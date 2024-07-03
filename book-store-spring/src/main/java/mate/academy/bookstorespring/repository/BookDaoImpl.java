@@ -5,6 +5,7 @@ import mate.academy.bookstorespring.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,7 +31,7 @@ public class BookDaoImpl implements BookRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Can't insert book into DB: " + book);
+            throw new DataProcessingException("Can't insert book into DB: " + book);
         } finally {
             if (session != null) {
                 session.close();
@@ -45,7 +46,7 @@ public class BookDaoImpl implements BookRepository {
             return session.createQuery(
                     "SELECT b FROM Book b", Book.class).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Can't get all books from DB");
+            throw new DataProcessingException("Can't get all books from DB");
         }
     }
 }
