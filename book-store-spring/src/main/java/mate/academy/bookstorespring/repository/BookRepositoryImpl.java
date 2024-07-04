@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BookDaoImpl implements BookRepository {
+public class BookRepositoryImpl implements BookRepository {
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public BookDaoImpl(SessionFactory sessionFactory) {
+    public BookRepositoryImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
