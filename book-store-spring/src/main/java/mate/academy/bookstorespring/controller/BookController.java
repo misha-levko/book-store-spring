@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
+
 @RequestMapping("/books")
+@RequestMapping(value = "/books")
 public class BookController {
     private final BookService bookService;
 
@@ -32,10 +34,16 @@ public class BookController {
         return bookService.getBookById(id);
     }
 
+    @PutMapping("/{id}")
+    public BookDto updateBookById(@PathVariable Long id, @RequestBody BookDto bookDto) {
+        return bookService.updateBookById(id, bookDto);
+    }
+
     @PostMapping
     public BookDto createBook(@RequestBody CreateBookRequestDto bookDto) {
         return bookService.createBook(bookDto);
     }
+
 
     @PutMapping("/{id}")
     public BookDto updateBookById(@PathVariable Long id,
