@@ -3,6 +3,7 @@ package mate.academy.bookstorespring.controller;
 import java.util.List;
 
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
 import mate.academy.bookstorespring.dto.BookDto;
 import mate.academy.bookstorespring.dto.CreateBookRequestDto;
@@ -41,6 +42,7 @@ public class BookController {
 
     @PostMapping
     public BookDto createBook(@RequestBody @Valid CreateBookRequestDto bookDto) {
+
         return bookService.createBook(bookDto);
     }
 
